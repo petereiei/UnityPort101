@@ -7,15 +7,26 @@ using UnityEngine.InputSystem;
 public class TestInput : MonoBehaviour
 {
     public PlayerInput playerInput;
+    public InputActions_Player inputActions;
 
     private void Awake()
     {
+        inputActions = new InputActions_Player();
+
         playerInput = GetComponent<PlayerInput>();
-        playerInput.Player.Movement.performed += ctx => Movement(ctx.ReadValue<Vector2>());
+        playerInput.defaultActionMap = "Player";
+
+        inputActions.Player.Movement.performed += Movement;
+        inputActions.Player.Movement.canceled += Movement;
     }
 
-    private void Movement(Vector2 direction)
+    public void Movement(InputAction.CallbackContext context)
     {
+        
+        var direction = context.ReadValue<Vector2>();
+
+        Debug.Log($"direction: {direction}");
+
         // set movement game 3D, vector2 to vector3 
         Vector3 move = new Vector3
         {
@@ -24,5 +35,15 @@ public class TestInput : MonoBehaviour
         }.normalized;
 
         transform.Translate(move * 5f * Time.deltaTime);
+    }
+
+    private void OnEnable()
+    {
+        inputActions.Player.Enable();
+    }
+
+    private void OnDisable()
+    {
+        inputActions.Player.Disable();
     }
 }
