@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,11 +8,18 @@ public abstract class Character : MonoBehaviour
     //module
     #region Module
     public CharacterAnimator characterAnimator;
+    public CharacterControl characterControl;
+    #endregion
+
+    //event
+    #region Method
+    public Action<Vector3> onMove;
+    public Action<Character> onAttack;
     #endregion
 
     //method
     #region Method
-    public abstract string GetAnimatorId();
+    public abstract string GetCharacterId();
     #endregion
 
     protected virtual void Awake()

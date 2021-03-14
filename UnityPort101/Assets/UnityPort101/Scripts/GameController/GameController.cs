@@ -2,13 +2,10 @@
 
 public class GameController : MonoSingleton<GameController>
 {
-    private const string PLAYER_PATH = "Prefabs/Characters/Player";
+    private const string PLAYER_PATH = "Prefabs/Characters/Bases/Player/Player";
     private GameObject area;
 
-
     public Transform playerPoint;
-
-    
 
     private void Awake()
     {
@@ -26,9 +23,13 @@ public class GameController : MonoSingleton<GameController>
 
     private void GetPlayer()
     {
-        GameObject player = Instantiate(Resources.Load<GameObject>(PLAYER_PATH));
+        PlayerCharacter player = Instantiate(Resources.Load<PlayerCharacter>(PLAYER_PATH));
         player.transform.SetParent(area.transform);
         player.transform.position = playerPoint.position;
         player.transform.localScale = Vector3.one;
+
+        player.Init();
+
+        
     }
 }
