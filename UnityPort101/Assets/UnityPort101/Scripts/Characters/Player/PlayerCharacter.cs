@@ -16,6 +16,9 @@ public class PlayerCharacter : Character
     {
         characterAnimator.Init(this);
         characterControl.Init(this);
+
+        onMove += characterAnimator.OnRun;
+        onAttack += characterAnimator.OnAttack;
     }
 
     public override string GetCharacterId()

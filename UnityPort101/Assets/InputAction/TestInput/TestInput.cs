@@ -28,7 +28,7 @@ public class TestInput : MonoBehaviour
         mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>(); ;
         playerRigidbody = GetComponent<Rigidbody>();
         inputActions = new InputActions_Player();
-
+        inputActions.Player.Enable();
         playerInput = GetComponent<PlayerInput>();
         playerInput.defaultActionMap = "Player";
 
@@ -109,7 +109,7 @@ public class TestInput : MonoBehaviour
 
     private void OnEnable()
     {
-        inputActions.Player.Enable();
+        //inputActions.Player.Enable();
     }
 
     private void OnDisable()

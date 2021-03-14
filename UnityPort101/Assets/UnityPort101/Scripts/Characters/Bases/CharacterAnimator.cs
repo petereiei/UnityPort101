@@ -21,4 +21,14 @@ public class CharacterAnimator : MonoBehaviour
         characterObject = Instantiate(Resources.Load<GameObject>(CHARACTER_OBJECT_PATH + character.GetCharacterId()), transform);
         this.animator = characterObject.GetComponentInChildren<Animator>();
     }
+
+    public void OnRun(Vector3 direction)
+    {
+        animator.SetFloat("Movement", direction.magnitude);
+    }
+
+    public void OnAttack(Character character)
+    {
+        animator.Play("Attack");
+    }
 }
