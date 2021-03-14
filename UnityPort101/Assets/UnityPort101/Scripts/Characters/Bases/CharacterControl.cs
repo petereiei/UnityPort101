@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class CharacterControl : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    protected Rigidbody rigidBody;
+    protected Character character;
+
+    private void Awake()
     {
-        
+        rigidBody = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public virtual void Init(Character character)
     {
-        
+        this.character = character;
+    }
+
+    public void Move(Vector3 direction)
+    {
+        rigidBody.MovePosition(rigidBody.position + direction * 5f);
     }
 }

@@ -7,11 +7,12 @@ public abstract class Character : MonoBehaviour
     //module
     #region Module
     public CharacterAnimator characterAnimator;
+    public CharacterControl characterControl;
     #endregion
 
     //method
     #region Method
-    public abstract string GetAnimatorId();
+    public abstract string GetCharacterId();
     #endregion
 
     protected virtual void Awake()
