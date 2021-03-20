@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5820480712310177254}
   - component: {fileID: 1166094794910958533}
+  - component: {fileID: 441239899531463169}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -41,6 +42,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7499bb2be2956545b5547e3bdd01a53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &441239899531463169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3614060117246253579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b44237784ae45840923c2d65244fa1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5024686558474172909
@@ -105,6 +118,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec3c40f61f2464047acb25b1e0aabc00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementSpeed: 5
+  turnSpeed: 0.1
+  movementSmoothingSpeed: 1
 --- !u!54 &2603823533777052282
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -165,6 +181,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 5b72d3c0-4267-4780-8fb5-d30be49c27e0
     m_ActionName: Player/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 079d5e9d-a047-4d7a-a70c-935647243d7a
+    m_ActionName: Player/Attack[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
