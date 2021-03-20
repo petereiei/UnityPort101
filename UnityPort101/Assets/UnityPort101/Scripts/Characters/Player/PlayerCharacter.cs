@@ -10,12 +10,14 @@ public class PlayerCharacter : Character
         base.Awake();
 
         characterControl = gameObject.GetComponent<PlayerControl>();
+        waponControl = gameObject.GetComponentInChildren<WaponControl>();
     }
 
     public void Init()
     {
         characterAnimator.Init(this);
         characterControl.Init(this);
+        waponControl.Init(this);
 
         onMove += characterAnimator.OnRun;
         onAttack += characterAnimator.OnAttack;

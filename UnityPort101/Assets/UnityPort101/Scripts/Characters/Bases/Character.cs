@@ -9,6 +9,7 @@ public abstract class Character : MonoBehaviour
     #region Module
     public CharacterAnimator characterAnimator;
     public CharacterControl characterControl;
+    public WaponControl waponControl;
     #endregion
 
     //event
