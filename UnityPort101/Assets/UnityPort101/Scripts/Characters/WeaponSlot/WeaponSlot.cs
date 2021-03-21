@@ -7,7 +7,7 @@ public class WeaponSlot : MonoBehaviour
     private const string WEAPON_OBJECT_PATH = "Prefabs/Weapons/";
 
     private string weaponId;
-    private GameObject characterWeapon;
+    private Weapon characterWeapon;
 
     public void Init(string weaponId)
     {
@@ -21,8 +21,10 @@ public class WeaponSlot : MonoBehaviour
 
     private void GenerateWeapon()
     {
-        GameObject weapon = Instantiate(Resources.Load<GameObject>(WEAPON_OBJECT_PATH + weaponId), transform);
+        Weapon weapon = Instantiate(Resources.Load<Weapon>(WEAPON_OBJECT_PATH + weaponId), transform);
         weapon.transform.localScale = Vector3.one;
+
+        weapon.Init();
 
         characterWeapon = weapon;
     }

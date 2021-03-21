@@ -5,6 +5,9 @@ using UnityEngine;
 
 public abstract class Character : MonoBehaviour
 {
+
+    public CharacterAttribute attribute;
+
     //module
     #region Module
     public CharacterAnimator characterAnimator;
