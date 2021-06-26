@@ -9,11 +9,13 @@ public class CharacterControl : MonoBehaviour
     protected Vector3 rawDirection;
 
     [Header("Movement Settings")]
-    public float movementSpeed = 1f;
-    public float turnSpeed = 0.1f;
-    public float movementSmoothingSpeed = 1f;
+    private float movementSpeed = 3f;
+    private float turnSpeed = 0.1f;
+    private float movementSmoothingSpeed = 5f;
     private Vector3 smoothInputMovement;
     protected Vector3 rawInputMovement;
+
+    public Camera mainCamera;
 
 
     public virtual void Awake()
@@ -24,6 +26,8 @@ public class CharacterControl : MonoBehaviour
     public virtual void Init(Character character)
     {
         this.character = character;
+
+        mainCamera = FindObjectOfType<Camera>();
     }
 
     private void Update()
@@ -40,9 +44,23 @@ public class CharacterControl : MonoBehaviour
 
     private void Movement()
     {
-        rigidBody.MovePosition(rigidBody.position + rawDirection * movementSpeed * Time.deltaTime);
 
-        character.onMove?.Invoke(rawDirection);
+        Vector3 movement = CameraDirection(rawDirection) * movementSpeed * Time.deltaTime;
+        rigidBody.MovePosition(transform.position + movement);
+
+        character.onMove?.Invoke(rawInputMovement);
+    }
+
+    Vector3 CameraDirection(Vector3 movementDirection)
+    {
+        var cameraForward = mainCamera.transform.forward;
+        var cameraRight = mainCamera.transform.right;
+
+        cameraForward.y = 0f;
+        cameraRight.y = 0f;
+
+        return cameraForward * movementDirection.z + cameraRight * movementDirection.x;
+
     }
 
     void CalculateMovementInputSmoothing()
@@ -59,10 +77,14 @@ public class CharacterControl : MonoBehaviour
     {
         if (rawDirection.sqrMagnitude > 0.01f)
         {
-            Quaternion rotation = Quaternion.Slerp(rigidBody.rotation, Quaternion.LookRotation(rawDirection), turnSpeed);
+
+            Quaternion rotation = Quaternion.Slerp(rigidBody.rotation,
+                                                 Quaternion.LookRotation(CameraDirection(rawDirection)),
+                                                 turnSpeed);
 
             rigidBody.MoveRotation(rotation);
         }
+
     }
 
     public void OnAttack()

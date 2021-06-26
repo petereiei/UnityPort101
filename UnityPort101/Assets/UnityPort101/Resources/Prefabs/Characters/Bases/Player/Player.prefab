@@ -121,9 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec3c40f61f2464047acb25b1e0aabc00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5
-  turnSpeed: 0.1
-  movementSmoothingSpeed: 1
+  mainCamera: {fileID: 0}
 --- !u!54 &2603823533777052282
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -133,12 +131,12 @@ Rigidbody:
   m_GameObject: {fileID: 5024686558474172909}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Drag: 3
+  m_AngularDrag: 1000
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!136 &1131062010917260364
 CapsuleCollider:
@@ -148,7 +146,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5024686558474172909}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.38
   m_Height: 1.75
